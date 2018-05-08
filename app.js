@@ -16,8 +16,10 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
 
-//Databases    
-mongoose.connect(process.env.DATABASEURL);
+//Databases 
+//backup to default back to local host if the process.env.DATAURL doesn't work
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v10";
+mongoose.connect(url);
 //mongoose.connect("mongodb://andrew:masterof12@ds053126.mlab.com:53126/yelpcamp");
 
 app.use(bodyParser.urlencoded({extended: true}));
